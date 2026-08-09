@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Lexus Hotel |Luxury & Accommodation</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           THEME & CSS VARIABLES (5-Star Luxury Palette)
+           ========================================== */
+        :root {
+            --primary: #111827;       /* Rich Charcoal / Near Black */
+            --secondary: #1f2937;     /* Deep Slate */
+            --accent: #c5a059;        /* Sophisticated Warm Gold */
+            --accent-hover: #b08d47;
+            --bg-light: #f9fafb;      /* Soft Off-White */
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--text-dark); background-color: var(--white); line-height: 1.7; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary); font-weight: 700; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { max-width: 1250px; margin: 0 auto; padding: 0 25px; }
+        .section { padding: 90px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+
+        /* Buttons */
+        .btn-gold {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 14px 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-gold:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+
+        /* Top Bar */
+        .top-bar { background-color: var(--primary); color: rgba(255,255,255,0.8); padding: 10px 0; font-size: 13px; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .top-bar span { display: flex; align-items: center; gap: 6px; }
+
+        /* Navigation */
+        .navbar { background-color: var(--white); padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; flex-direction: column; }
+        .brand-name { font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: var(--primary); letter-spacing: 0.5px; }
+        .brand-tagline { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); font-weight: 600; }
+        
+        .nav-links { display: flex; align-items: center; gap: 35px; }
+        .nav-links a { font-size: 15px; font-weight: 500; color: var(--text-dark); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--accent); transition: var(--transition); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.55)), url('https://images.unsplash.com/photo-1542314831-c6a4d27ce66f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+        .hero-content { max-width: 850px; padding: 0 20px; }
+        .hero-subtitle { font-size: 14px; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); font-weight: 700; margin-bottom: 15px; display: block; }
+        .hero h1 { font-size: 3.8rem; color: var(--white); margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.15rem; margin-bottom: 35px; opacity: 0.9; }
+
+        /* Quick Booking Bar */
+        .booking-bar {
+            background: var(--white);
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            max-width: 1100px;
+            margin: -60px auto 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 4px;
+        }
+        .booking-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) 150px; gap: 20px; align-items: end; }
+        .form-group label { display: block; font-size: 12px; text-transform: uppercase; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 2px; font-family: var(--font-body); font-size: 14px; color: var(--text-dark); background: var(--bg-light); outline: none; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--accent); }
+
+        /* Section Headers */
+        .section-header { margin-bottom: 60px; text-align: center; }
+        .section-header span { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 10px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); }
+
+        /* Rooms Grid */
+        .rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .room-card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 5px 25px rgba(0,0,0,0.05); transition: var(--transition); border: 1px solid #f3f4f6; }
+        .room-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .room-img-wrapper { position: relative; height: 260px; overflow: hidden; }
+        .room-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .room-card:hover .room-img-wrapper img { transform: scale(1.05); }
+        .room-badge { position: absolute; top: 15px; left: 15px; background: var(--accent); color: var(--white); font-size: 11px; font-weight: 600; padding: 5px 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .room-content { padding: 30px; }
+        .room-features { display: flex; gap: 15px; font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+        .room-content h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .room-content p { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; }
+        .room-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 20px; }
+        .price { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+        .price span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+
+        /* Dining & Amenities Split Section */
+        .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .split-text h2 { font-size: 2.3rem; margin-bottom: 20px; }
+        .split-text p { color: var(--text-muted); margin-bottom: 25px; }
+        .amenities-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .amenity-item { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 14px; }
+        .amenity-item span { color: var(--accent); font-weight: bold; }
+        .split-image img { width: 100%; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        /* Conferences Section */
+        .meetings-banner { 
+            background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+        .meetings-banner h2 { color: var(--white); font-size: 3rem; margin-bottom: 20px; }
+        .meetings-banner p { max-width: 700px; margin: 0 auto 35px; opacity: 0.9; font-size: 1.1rem; }
+
+        /* Footer */
+        footer { background-color: var(--primary); color: rgba(255,255,255,0.75); padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 60px; }
+        .footer-col h3, .footer-col h4 { color: var(--white); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col p { font-size: 14px; margin-bottom: 15px; }
+        .footer-col ul li { margin-bottom: 12px; font-size: 14px; }
+        .footer-col ul a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 13px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .split-section { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.8rem; }
+            .booking-form { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <span>📞 +251 11 618 0000 | ✉️ reservations@uslexushotel.com</span>
+            <span>📍 Hawassa university Street,Hawassa, Ethiopia</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand">
+                <span class="brand-name">US LEXUS HOTEL</span>
+                <span class="brand-tagline">Hawassa •  Luxury</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#rooms">Rooms & Suites</a>
+                <a href="#dining">Dining & Bars</a>
+                <a href="#meetings">Meetings & Events</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#rooms" class="btn-gold">Book Your Stay</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">Welcome to US Lexus Hotel</span>
+            <h1>Experience Unrivaled Elegance in the Heart of the Capital</h1>
+            <p>Combining world-class international luxury standards with warm East African hospitality, located just in front of hawassa university Enterance.</p>
+            <a href="#rooms" class="btn-gold">Explore Accommodations</a>
+        </div>
+    </header>
+
+    <!-- Interactive Quick Booking Bar -->
+    <div class="container">
+        <div class="booking-bar">
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>Check-in Date</label>
+                    <input type="date" value="2026-08-10">
+                </div>
+                <div class="form-group">
+                    <label>Check-out Date</label>
+                    <input type="date" value="2026-08-12">
+                </div>
+                <div class="form-group">
+                    <label>Guests</label>
+                    <select>
+                        <option>1 Adult, 1 Room</option>
+                        <option selected>2 Adults, 1 Room</option>
+                        <option>Family Suite (3+ Guests)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn-gold" style="width: 100%;">Check Availability</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container split-section">
+            <div class="split-text">
+                <span style="color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px;">Our Heritage</span>
+                <h2>Redefining Hospitality in Hawassa</h2>
+                <p>US Lexus Hotel stands as a premier destination for both business and leisure travelers. Situated in the vibrant Hawassa university street, our property offers immediate proximity to corporate hubs, diplomatic missions, and cultural landmarks.</p>
+                <p>Enjoy our complimentary 24-hour airport shuttle service, state-of-the-art wellness facilities, and immaculate guest rooms designed with uncompromising attention to detail.</p>
+                <div class="amenities-list">
+                    <div class="amenity-item"><span>✓</span> Free High-Speed Wi-Fi</div>
+                    <div class="amenity-item"><span>✓</span> 24/7 Airport Shuttle</div>
+                    <div class="amenity-item"><span>✓</span> Executive Fitness Center</div>
+                    <div class="amenity-item"><span>✓</span> Fine Dining & Cocktail Bar</div>
+                </div>
+            </div>
+            <div class="split-image">
+                <img src="us.lexus hotel.front.jpg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms & Suites Section -->
+    <section id="rooms" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span>Accommodations</span>
+                <h2>Refined Rooms & Executive Suites</h2>
+            </div>
+            
+            <div class="rooms-grid">
+                <!-- Room 1 -->
+                <div class="room-card">
+                    <div class="room-img-wrapper">
+                        <span class="room-badge">Popular for Business</span>
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.ysZuSo4hr1ss180zOrQ6XQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Standard Deluxe Room">
+                    </div>
+                    <div class="room-content">
+                        <div class="room-features">
+                            <span>37 m²</span> • <span>City View</span> • <span>High-Speed Wi-Fi</span>
+                        </div>
+                        <h3>Standard Deluxe Room</h3>
+                        <p>Designed for corporate travelers seeking comfort and efficiency. Features an ergonomic workspace, luxury bath fittings, and satellite TV.</p>
+                        <div class="room-footer">
+                            <div class="price">ETB 4,000  <span>/ night</span></div>
+                            <a href="#contact" class="btn-gold" style="padding: 8px 16px; font-size: 12px;">Book Room</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="room-card">
+                    <div class="room-img-wrapper">
+                        <span class="room-badge">Executive Choice</span>
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.pf7gcKH8mlOG_EdPUrG16QHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Executive Room">
+                    </div>
+                    <div class="room-content">
+                        <div class="room-features">
+                            <span>42 m²</span> • <span>King Bed</span> • <span>Lounge Access</span>
+                        </div>
+                        <h3>Executive Room</h3>
+                        <p>Spacious layout offering a double king-sized bed, premium coffee-making facilities, mini-bar, and exclusive access to executive lounge benefits.</p>
+                        <div class="room-footer">
+                            <div class="price">ETB 5,500 <span>/ night</span></div>
+                            <a href="#contact" class="btn-gold" style="padding: 8px 16px; font-size: 12px;">Book Room</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="room-card">
+                    <div class="room-img-wrapper">
+                        <span class="room-badge">Ultimate Luxury</span>
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.dL6Ice_0SLursKsoxowqrgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Diplomatic Suite">
+                    </div>
+                    <div class="room-content">
+                        <div class="room-features">
+                            <span>85 m²</span> • <span>Living Room</span> • <span>Butler Service</span>
+                        </div>
+                        <h3>Diplomatic Suite</h3>
+                        <p>An expansive suite featuring a dedicated master bedroom, private living area suitable for small meetings, jacuzzi, and personalized butler service.</p>
+                        <div class="room-footer">
+                            <div class="price">ETB 10,000 <span>/ night</span></div>
+                            <a href="#contact" class="btn-gold" style="padding: 8px 16px; font-size: 12px;">Book Room</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining & Bars Section -->
+    <section id="dining" class="section">
+        <div class="container split-section">
+            <div class="split-image">
+                <img src="https://th.bing.com/th/id/OIP.1_3Z9a-AJaVFgums4S-TvwHaE7?w=255&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Fine Dining Restaurant">
+            </div>
+            <div class="split-text">
+                <span style="color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px;">Gastronomy</span>
+                <h2>Culinary Excellence & Vibrant Lounge Bars</h2>
+                <p>Indulge in an exquisite culinary journey at our main dining restaurant, serving freshly prepared gourmet international buffets alongside authentic East African delicacies.</p>
+                <p>Unwind at our signature cocktail bar featuring artisanal drinks, freshly roasted Ethiopian coffee ceremonies, and relaxed ambient music.</p>
+                <ul class="amenities-list" style="margin-top: 20px;">
+                    <li class="amenity-item"><span>✓</span> All-Day Dining Buffets</li>
+                    <li class="amenity-item"><span>✓</span> Traditional Coffee Lounge</li>
+                    <li class="amenity-item"><span>✓</span> Rooftop Cocktail Bar</li>
+                    <li class="amenity-item"><span>✓</span> 24-Hour In-Room Dining</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meetings & Events Banner Section -->
+    <section id="meetings" class="meetings-banner">
+        <div class="container">
+            <span>Corporate & Social Events</span>
+            <h2>State-of-the-Art Conference Halls</h2>
+            <p>From large corporate summits and international seminars to private gala banquets, our flexible venues accommodate up to 200 guests with advanced multimedia support and high-speed fiber connectivity.</p>
+            <a href="#contact" class="btn-gold">Inquire About Venues</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>US LEXUS HOTEL</h3>
+                <p>Your premier sanctuary of luxury accommodation, gourmet dining, and executive conference spaces in Hawassa, Ethiopia.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Our Hotel</a></li>
+                    <li><a href="#rooms">Rooms & Pricing</a></li>
+                    <li><a href="#dining">Dining & Menus</a></li>
+                    <li><a href="#meetings">Event Venues</a></li>
+                </ul>
+            </div>
+  <div class="footer-col">
+                <h3>Nearby Attractions</h3>
+                <ul>
+                    <li>Lake Hawassa </li>
+                    <li>Amora Gedel Fish Market </li>
+                    <li>Hawassa Public Library</li>
+                    <li>Sidama Cultural Hall</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Location</h4>
+                <p>📍 Hawassa University Street, Hawassa</p>
+                <p>📞 +251 11 618 0000 / +251 91 100 0000</p>
+                <p>✉️ reservations@uslexushotel.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 US Lexus Hotel. All Rights Reserved. Crafted for International Hospitality Standards.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
