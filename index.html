@@ -125,6 +125,8 @@
 .hero-content {
   position: relative;
   z-index: 3;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
         /* Quick Booking Bar */
@@ -229,18 +231,24 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <span class="hero-subtitle">Welcome to US Lexus Hotel</span>
-            <h1>Experience Unrivaled Elegance in the Heart of the Capital</h1>
-            <p>Combining world-class international luxury standards with warm East African hospitality, located just in front of hawassa university Enterance.</p>
-            <a href="#rooms" class="btn-gold">Explore Accommodations</a>
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="us lexus background.mp4" type="video/mp4" />
- </video>        
-</div>         
-    </header>
+   <!-- Hero Section -->
+<header class="hero">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="us lexus background.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Dark Overlay for Contrast -->
+    <div class="hero-overlay"></div>
+
+    <!-- Main Content Layer -->
+    <div class="hero-content">
+        <span class="hero-subtitle">Welcome to US Lexus Hotel</span>
+        <h1>Experience Unrivaled Elegance in the Heart of the Capital</h1>
+        <p>Combining world-class international luxury standards with warm East African hospitality, located just in front of Hawassa University Entrance.</p>
+        <a href="#rooms" class="btn-gold">Explore Accommodations</a>
+    </div>
+</header>
 
     <!-- Interactive Quick Booking Bar -->
     <div class="container">
