@@ -87,6 +87,44 @@
         .hero-subtitle { font-size: 14px; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); font-weight: 700; margin-bottom: 15px; display: block; }
         .hero h1 { font-size: 3.8rem; color: var(--white); margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: 1.15rem; margin-bottom: 35px; opacity: 0.9; }
+        .hero-video-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Dark overlay to make white text legible */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
 
         /* Quick Booking Bar */
         .booking-bar {
@@ -198,6 +236,16 @@
             <p>Combining world-class international luxury standards with warm East African hospitality, located just in front of hawassa university Enterance.</p>
             <a href="#rooms" class="btn-gold">Explore Accommodations</a>
         </div>
+        <section class="hero-video-wrapper">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="background-video.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Next-Gen Digital Solutions</h1>
+    <p>We transform brands with clean code.</p>
+  </div>
+</section>
     </header>
 
     <!-- Interactive Quick Booking Bar -->
